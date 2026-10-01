@@ -758,7 +758,7 @@ export function App() {
             ⚡ <strong>Electricity Market Clearing Engine</strong> · Optimal Nodal Pricing &amp; Economic Dispatch
           </p>
           <p className="text-slate-400 font-mono text-[11px]">
-            © Sandeep Neupane · {new Date().getFullYear()}
+            © Er.Sandeep Neupane · {new Date().getFullYear()}
           </p>
         </div>
       </footer>
