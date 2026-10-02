@@ -11,6 +11,21 @@ import { UserAccount, UserRole } from '../types';
 const USERS_STORAGE_KEY = 'nepal_market_users_v2';
 const CURRENT_USER_KEY = 'nepal_market_auth_user_v2';
 const DELETED_USERS_KEY = 'nepal_market_deleted_users_v2';
+/**
+ * Sign-in is NOT remembered. Every time the app is opened the login screen is shown.
+ * The signed-in user is held in memory only.
+ * Set to true to keep the user signed in on page refresh in the same tab (cleared when the tab closes).
+ */
+const KEEP_SESSION_ON_REFRESH = false;
+
+let memorySession: UserAccount | null = null;
+
+// Remove any session that an earlier version saved permanently in this browser.
+try {
+  localStorage.removeItem(CURRENT_USER_KEY);
+} catch {
+  /* storage unavailable */
+}
 
 // Inbuilt protected accounts
 export const INBUILT_ADMIN: UserAccount = {
