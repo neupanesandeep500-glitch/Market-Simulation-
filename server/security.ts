@@ -21,7 +21,7 @@ function safeEqual(a: string, b: string): boolean {
 }
 
 export const passcodeConfigured = () => !!(process.env.ADMIN_PASSCODE && process.env.ADMIN_PASSCODE.trim());
-export const passcodeRequired = () => process.env.NODE_ENV === 'production' || passcodeConfigured();
+export const passcodeRequired = () => process.env.ENABLE_ADMIN_PASSCODE === 'true' && passcodeConfigured();
 
 export function requireAdmin(req: Request, res: Response, next: NextFunction) {
   if (!passcodeRequired()) return next(); // local development only
